@@ -16,4 +16,36 @@ import java.io.IOException;
 import static cs112.lab09.Constants.*;
 
 public class MainController {
+    @FXML
+    Label titleLabel;
+    @FXML
+    Label subtitleLabel;
+    @FXML
+    Label descriptionLabel;
+    @FXML
+    ImageView imageLabel;
+
+    public void initialize(){
+        titleLabel.setText(MAIN_TITLE);
+        subtitleLabel.setText(MAIN_SUBTITLE);
+        descriptionLabel.setText(MAIN_DESCRIPTION);
+        Image image = new Image(REDSUMMER_IMAGE_PATH);
+        imageLabel.setImage(image);
+    }
+    public void handleStartButton() throws IOException{
+        Stage stage = (Stage)titleLabel.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(RedSummer.class.getResource(MAP_VIEW_RESOURCE));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.setTitle(MAP_VIEW_TITLE);
+        stage.show();
+        //this will load the map window, and will be used by the MapController.
+        //make the wireframe with scene builder, then relpace map-view.fxml with the wireframe.
+        //then, code the MapController.
+
+    }
+    public void handleQuitButton(){
+        System.exit(0);
+    }
+
 }
